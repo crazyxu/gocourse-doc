@@ -18,9 +18,19 @@
 
 
 
-	<meta name="keywords" content="登录," />
 
-  <title> 用户管理 // GoCourse接口开发文档 </title>
+    <meta name="keywords" content="gocourse,xucan" />
+
+
+
+
+
+    <link rel="shorticon icon" type="image/x-icon" href="/gocourse-doc/favicon.ico?v=0.4.0" />
+
+
+
+
+  <title> 在Vmware中基于Centos7搭建Hadoop环境 // GoCourse接口开发文档 </title>
 </head>
 
 <body>
@@ -101,7 +111,7 @@
           
           
             
-              用户管理
+              在Vmware中基于Centos7搭建Hadoop环境
             
           
         </h1>
@@ -110,22 +120,11 @@
       <div class="post-meta">
         <span class="post-time">
           
-            发表于 2015-04-29
+            发表于 2015-05-11
           
         </span>
 
         
-          
-            <span class="post-category">
-              &nbsp; | &nbsp; 分类于
-              
-                <a href="/gocourse-doc/categories/学生/">学生</a>
-
-                
-                
-
-              
-            </span>
           
         
 
@@ -142,12 +141,15 @@
         
 
         
-          <h2 id="逻辑整理">逻辑整理</h2><h3 id="用户使用逻辑：">用户使用逻辑：</h3><p>用户通过学号密码首次登录后需要修改相关信息（密码，院系，班级等），之后打开app不需要手动登陆操作</p>
-<h3 id="软件实现逻辑：">软件实现逻辑：</h3><p>客户端提交学号和密码登录后回接收到用户验证标识64位Token值，Token值会定时刷新以提高安全性，定时刷新需要客户端主动提交请求。Token值建议作为全局变量存储在Applicatioin中，之后每一次设计到账号信息的请求都需要Token值</p>
-<h2 id="接口实现">接口实现</h2><h3 id="用户登录">用户登录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<h3 id="用户注册">用户注册</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<h3 id="修改密码">修改密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<h3 id="找回密码">找回密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+          <h3 id="Hadoop简单介绍">Hadoop简单介绍</h3><p>Hadoop是一个由Apache基金会所开发的分布式系统基础架构。<br>Hadoop实现了一个分布式文件系统（Hadoop Distributed File System），简称HDFS。HDFS有高容错性的特点，并且设计用来部署在低廉的（low-cost）硬件上；而且它提供高吞吐量（high throughput）来访问应用程序的数据，适合那些有着超大数据集（large data set）的应用程序。HDFS放宽了（relax）POSIX的要求，可以以流的形式访问（streaming access）文件系统中的数据。</p>
+<h3 id="搭建步骤">搭建步骤</h3><ul>
+<li>1.在vmware中配置至少三台虚拟机，hadoop-master，hadoop-node-01，hadoop-node-02，hadoop-node-03，进行基本安装配置。</li>
+<li>2.安装jdk，Hadoop基于java</li>
+</ul>
+<h3 id="1-配置虚拟机">1.配置虚拟机</h3><h2 id="此处省略">此处省略</h2><h3 id="2-安装jdk传送门">2.安装jdk<a href="http://www.2cto.com/os/201503/381758.html" target="_blank" rel="external">传送门</a></h3><p><strong>更新系统</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#yum update</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>删除centos7自带的Oracle的JavaJDK</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#java -version </span></span><br><span class="line"><span class="comment">#rpm -qa | grep java</span></span><br><span class="line"><span class="comment">#rpm -e --nodeps java-xxx-xxx</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>安装sun公司jdk</strong><br>下载最新rpm格式jdk<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="external">传送门</a>,通过虚拟机ISO镜像文件传到centos。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mkdir /mnt/cdrom #创建镜像挂载文件夹</span></span><br><span class="line"><span class="comment">#mount /dev/cdrom /mnt/cdrom # 挂载镜像</span></span><br><span class="line"><span class="comment">#</span></span><br></pre></td></tr></table></figure></p>
+
         
       </div>
     
@@ -155,26 +157,16 @@
     
       <div class="post-footer">
         
-          <div class="post-tags">
-            
-              <a href="/gocourse-doc/tags/登录/">
-                #登录
-              </a>
-            
-          </div>
-        
 
         
           <div class="post-nav">
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/gocourse-doc/2015/04/29/test-manager/">测验管理</a>
-              
             </div>
 
             <div class="post-nav-next post-nav-item">
               
-                <a href="/gocourse-doc/2015/04/29/course-manager/">课程管理</a>
+                <a href="/gocourse-doc/2015/04/29/hello-world/">Hello World</a>
               
             </div>
           </div>
@@ -230,11 +222,11 @@
       <p class="site-description motion-element"></p>
       <div class="site-state motion-element">
         <div class="site-state-item site-state-posts">
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </div>
         <div class="site-state-item site-state-tags">
-            <span class="site-state-item-count">3</span>
+            <span class="site-state-item-count">0</span>
             <span class="site-state-item-name">标签</span>
         </div>
         <div class="site-state-item site-state-pages">
@@ -260,7 +252,7 @@
         <div class="post-toc">
           
           
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑整理"><span class="nav-number">1.</span> <span class="nav-text">逻辑整理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户使用逻辑："><span class="nav-number">1.1.</span> <span class="nav-text">用户使用逻辑：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件实现逻辑："><span class="nav-number">1.2.</span> <span class="nav-text">软件实现逻辑：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口实现"><span class="nav-number">2.</span> <span class="nav-text">接口实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户登录"><span class="nav-number">2.1.</span> <span class="nav-text">用户登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户注册"><span class="nav-number">2.2.</span> <span class="nav-text">用户注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改密码"><span class="nav-number">2.3.</span> <span class="nav-text">修改密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#找回密码"><span class="nav-number">2.4.</span> <span class="nav-text">找回密码</span></a></li></ol></li></ol></div>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hadoop简单介绍"><span class="nav-number">1.</span> <span class="nav-text">Hadoop简单介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建步骤"><span class="nav-number">2.</span> <span class="nav-text">搭建步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-配置虚拟机"><span class="nav-number">3.</span> <span class="nav-text">1.配置虚拟机</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#此处省略"><span class="nav-number"></span> <span class="nav-text">此处省略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装jdk传送门"><span class="nav-number">1.</span> <span class="nav-text">2.安装jdk传送门</span></a></li></ol></div>
           
         </div>
         <div class="post-toc-indicator-bottom post-toc-indicator"></div>
